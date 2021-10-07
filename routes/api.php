@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+ 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix'=>'v1'  ,'namespace' =>'API'], function () {
+    // 'check-json-web-token'
+    Route::group(['prefix'=>'/' , 'middleware' =>['check-json-web-token']],function(){
+        Route::post('logout', 'AuthController@logout')->name('logout');
+        Route::post('refresh', 'AuthController@refresh')->name('refresh');
+        Route::post('me', 'AuthController@me')->name('me');
+    }); 
+    Route::post('login', 'AuthController@login')->name('login'); 
+
 });
