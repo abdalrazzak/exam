@@ -1,5 +1,6 @@
 <?php
 
+use App\App;
 use App\User;
 use App\Device;
 use Illuminate\Database\Seeder;
@@ -20,7 +21,7 @@ class DeviceSeeder extends Seeder
             $devices[] =   [
                 'token' => Str::random(config('token.token_length')) , 
                 'uID'   =>  User::inRandomOrder()->first()->id  , 
-                'appID' =>  rand(1,100) , 
+                'appID' =>  App::inRandomOrder()->first()->id , 
                 'lang'  =>  'en_GB'  , // We can put the languages in a table 
                 'os'    =>  'ubuntu' 
             ];
