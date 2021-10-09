@@ -14,7 +14,9 @@ trait Responser {
     public $text_error = [
         '419'    => 'Your token has expired. Please, login again', 
         '420'    => 'Your token is invalid. Please, login again' ,
-        'E001'       => 'this email or password incorrect'   
+        'E001'       => 'this email or password incorrect'  , 
+        'E002'       => 'Server Error'  , 
+
     ];
  
       

@@ -15,6 +15,7 @@ class AppSeeder extends Seeder
         for ($i=0; $i < 1000; $i++) {
             $apps[] =   [
                 'name'  =>  Str::random(20)  , // app name 
+                'created_at'  =>  now()   
                 
             ];
         }

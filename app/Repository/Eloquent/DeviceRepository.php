@@ -2,11 +2,11 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Device;
-use App\Repository\UserRepositoryInterface;
+use App\Device; 
+use App\Repository\DeviceRepositoryInterface;
 use Illuminate\Support\Collection;
 
-class DeviceRepository extends BaseRepository implements UserRepositoryInterface
+class DeviceRepository extends BaseRepository implements DeviceRepositoryInterface
 {
 
    /**

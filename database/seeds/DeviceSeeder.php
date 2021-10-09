@@ -23,7 +23,9 @@ class DeviceSeeder extends Seeder
                 'uID'   =>  User::inRandomOrder()->first()->id  , 
                 'appID' =>  App::inRandomOrder()->first()->id , 
                 'lang'  =>  'en_GB'  , // We can put the languages in a table 
-                'os'    =>  'ubuntu' 
+                'os'    =>  'ubuntu' ,
+                'created_at'  =>  now()   
+
             ];
         }
         $chunks = array_chunk($devices, 100);
