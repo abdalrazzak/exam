@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
  
 use Closure;
 use App\User;
+use App\Helpers\Helper;
 use App\Traits\Responser;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -23,7 +24,8 @@ class CheckJsonWebToken
     public function handle($request, Closure $next)
     {
             try {
-              $user = JWTAuth::parseToken()->authenticate(); // you can use user any where
+            //   $user = JWTAuth::parseToken()->authenticate(); // you can use user any where
+              $token = $request->header(Helper::TOKEN_HANDLER, null);
               
                 return $next($request);
             }catch (TokenExpiredException $e) {

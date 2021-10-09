@@ -19,10 +19,8 @@ Route::group(['prefix'=>'v1'  ,'namespace' =>'API'], function () {
     // 'check-json-web-token'
     Route::post('login', 'AuthController@login')->name('login'); 
 
-    Route::group(['prefix'=>'/' , 'middleware' =>['check-json-web-token']],function(){
-        Route::post('logout', 'AuthController@logout')->name('logout');
-        Route::post('refresh', 'AuthController@refresh')->name('refresh');
-        Route::post('me', 'AuthController@me')->name('me');
+    Route::group(['prefix'=>'/' , 'middleware' =>['check-token']],function(){
+        
     }); 
 
 });
