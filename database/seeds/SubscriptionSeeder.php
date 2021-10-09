@@ -16,7 +16,8 @@ class SubscriptionSeeder extends Seeder
         for ($i=0; $i < 1000; $i++) {
             $Subscriptions[] =   [
                 'deviceID' => Device::inRandomOrder()->first()->id ,
-                'expire_date'  => \Carbon\Carbon::now()->addMonth()
+                'expire_date'  => \Carbon\Carbon::now()->addMonth() , 
+                'created_at'  => now()
             ];
         }
 

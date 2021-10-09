@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
  
 use Closure;
 use App\User;
+use App\Device;
 use App\Helpers\Helper;
 use App\Traits\Responser;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -22,24 +23,19 @@ class CheckJsonWebToken
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-            try {
-            //   $user = JWTAuth::parseToken()->authenticate(); // you can use user any where
-              $token = $request->header(Helper::TOKEN_HANDLER, null);
-              
+    {   
+        //   $user = JWTAuth::parseToken()->authenticate(); // you can use user any where
+            $token = $request->header(Helper::TOKEN_HANDLER , null);
+            $check = Device::found((string) $token)->exists();
+            if ($check) {
+                $subscription = Device::where('token' , '=' , $token)->first()->subscription()->first() ;  
+                $request['subscription'] = $subscription ;
+                if(is_null($subscription) || !Helper::checkExpireDate($subscription->expire_date)){
+                    return $this->error('E003'); // Subscription expired
+                }
                 return $next($request);
-            }catch (TokenExpiredException $e) {
-                //Thrown if token has expired
-                return $this->error('419');
-            }catch (TokenInvalidException $e) {
-                //Thrown if token invalid
-                return $this->error('420');
-            }
-            catch (JWTException $e) {
-                //Thrown if token was not found in the request.
-                return $this->error('421',$e->getMessage());
-            }
-  
+            }  
+            return $this->error('403'); // not found token 
 
     }
 }

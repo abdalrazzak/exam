@@ -12,4 +12,9 @@ class SubscriptionObserver
      {
          event(new SubscriptionEvent());
      }
+
+     public function updated(Subscription $subscription)
+     {
+         event(new SubscriptionEvent());
+     }
 }

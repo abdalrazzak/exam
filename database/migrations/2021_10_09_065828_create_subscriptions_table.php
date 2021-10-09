@@ -17,6 +17,7 @@ class CreateSubscriptionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('deviceID')->unsigned()->index('deviceID');
             $table->date('expire_date')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
 
             $table->foreign('deviceID')->references('id')->on('devices')->onDelete('cascade') ;

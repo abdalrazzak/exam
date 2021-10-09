@@ -14,8 +14,12 @@ trait Responser {
     public $text_error = [
         '419'    => 'Your token has expired. Please, login again', 
         '420'    => 'Your token is invalid. Please, login again' ,
+        '403'    => 'Token is not found ' ,
         'E001'       => 'this email or password incorrect'  , 
         'E002'       => 'Server Error'  , 
+        'E003'       => 'Subscription expired'  , 
+        'E004'       => 'There are no parameters to process'  , 
+        'E005'       => 'Invalid payment'  , 
 
     ];
  
@@ -47,6 +51,7 @@ trait Responser {
      * @return response
      */
     public function data($key , $value , $msg = null){
+        (!is_null($msg)) ? $this->data['msg'] = $msg : null  ;
         $this->data[$key] = $value;
         return $this->responseData($this->data);
     }
