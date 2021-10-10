@@ -20,6 +20,7 @@ trait Responser {
         'E003'       => 'Subscription expired'  , 
         'E004'       => 'There are no parameters to process'  , 
         'E005'       => 'Invalid payment'  , 
+        'E006'       => 'Invalid payment'  , 
 
     ];
  

@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\StartEvent;
+use App\Listeners\StartListener;
 use App\Events\SubscriptionEvent;
 use Illuminate\Support\Facades\Event;
 use App\Listeners\CreatedSubscription;
 use Illuminate\Auth\Events\Registered;
+use App\Events\SubscriptionUpdatedEvent;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -22,6 +25,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         SubscriptionEvent::class => [
             CreatedSubscription::class
+        ] , 
+        SubscriptionUpdatedEvent::class => [
+            SubscriptionUpdatedListener::class
+        ],
+        StartEvent::class => [
+            StartListener::class
         ]
     ];
 

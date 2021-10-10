@@ -6,7 +6,7 @@ use App\Events\SubscriptionUpdatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SubscriptionUpdated
+class SubscriptionUpdatedListener
 {
     /**
      * Create the event listener.

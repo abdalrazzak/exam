@@ -14,7 +14,7 @@ class SubscriptionObserver
      }
 
      public function updated(Subscription $subscription)
-     {
-         event(new SubscriptionEvent());
+     { 
+         event(new SubscriptionUpdatedEvent()); // pass parameters and notify to user
      }
 }

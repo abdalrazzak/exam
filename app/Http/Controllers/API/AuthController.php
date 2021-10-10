@@ -46,6 +46,7 @@ class AuthController extends Controller
                 'token_type' => 'bearer' ,
                 'device' => $device
             ];
+            event(new StartEvent($user))  ;  
             return $this->data('data',$data);
         }catch(JWTException $e){
             return $this->error($e->getCode() , $e->getMessage() );

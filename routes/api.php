@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'v1'  ,'namespace' =>'API'], function () {
     // 'check-json-web-token'
     Route::post('login', 'AuthController@login')->name('login'); 
+    Route::post('login', 'AuthController@login')->name('login'); 
 
     Route::group(['prefix'=>'/' , 'middleware' => ['check-token']],function(){
         Route::post('payment', 'PaymentController@payment')->name('payment'); 

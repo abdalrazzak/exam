@@ -32,6 +32,6 @@ class Device extends Authenticatable
     }
 
     public function user(){
-        return $this->belongsTo(User::class , 'uID' , 'id')
+        return $this->belongsTo(User::class , 'uID' , 'id') ; 
     }
 }

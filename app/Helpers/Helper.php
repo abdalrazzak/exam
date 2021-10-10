@@ -28,10 +28,10 @@ class Helper
      * @return boolean
      */
     public static function checkExpireDate($expire_date){ // Returns true if the subscription has expired  , otherwise false
-
+         
         $expire_date = Carbon::create($expire_date);
         $nowDate = Carbon::now();
-        return $expire_date->gt($nowDate);
+        return $nowDate->gt($expire_date);
     }
 
 

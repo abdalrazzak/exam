@@ -3,11 +3,12 @@
 namespace App\Jobs;
 
 use App\Subscription;
+use App\Helpers\Helper;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Foundation\Bus\Dispatchable; 
 
 class SubscriptionProcessJob implements ShouldQueue
 {
@@ -31,9 +32,8 @@ class SubscriptionProcessJob implements ShouldQueue
     public function handle()
     {
         foreach (Subscription::all() as $subscription){
-
-            if(Helper::checkExpireDate($subscription->expire_date)){ // If expired update status and trigger event 
-                $subscription->update(['active' , 0 ]) ;
+            if(Helper::checkExpireDate($subscription->expire_date)){ // If expired update status and trigger event in observer
+                $subscription->update(['active' => false ]) ;
             } 
         }
     }

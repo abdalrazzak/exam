@@ -30,7 +30,8 @@ class CheckJsonWebToken
             if ($check) {
                 $subscription = Device::where('token' , '=' , $token)->first()->subscription()->first() ;  
                 $request['subscription'] = $subscription ;
-                if(is_null($subscription) || !Helper::checkExpireDate($subscription->expire_date)){
+               
+                if(!$subscription->active){
                     return $this->error('E003'); // Subscription expired
                 }
                 return $next($request);
