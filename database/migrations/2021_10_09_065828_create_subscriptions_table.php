@@ -16,7 +16,7 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('deviceID')->unsigned()->index('deviceID');
-            $table->date('expire_date')->nullable();
+            $table->date('expire_date')->nullable()->index('expire_date');
             $table->boolean('active')->default(true);
             $table->timestamps();
 
