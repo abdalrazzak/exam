@@ -6,6 +6,7 @@ use App\User;
 use App\Device;
 use App\Helpers\Helper;
 use App\Traits\Responser;
+use App\Events\StartEvent;
 use Tymon\JWTAuth\JWTAuth ;
 use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller; 
@@ -17,6 +18,8 @@ use App\Repository\Eloquent\DeviceRepository;
 class AuthController extends Controller
 {
     use Responser ;   
+
+    
 
     /**
      * Get a JWT via given credentials.
