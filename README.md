@@ -109,9 +109,9 @@ header
 ### To check expired subscriptions and send notifications to users . 
 open termianl with SSH and trigger command  . 
 > php artisan queue:work 
-and 
-> php artisan subscription:check 
-or you can trigger everyday with cron job from server .
+> and 
+> php artisan subscription:check  
+> or you can trigger everyday with cron job from server .
 
 # Testing  
 For development you can run the following command . 
