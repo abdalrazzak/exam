@@ -22,6 +22,8 @@ class Device extends Authenticatable
         return $query->where('token' ,'=', $token);
     }
  
+    
+
 
     public function scopeFilter($query ,Array $filter){
         return $query->where($filter)->get();
