@@ -19,12 +19,8 @@ class DeviceSeeder extends Seeder
          
 
         for ($i=0; $i < 1000; $i++) {
-            $uID = User::inRandomOrder()->first()->id  ;
-            $appID =  App::inRandomOrder()->first()->id ; 
             $devices[] =   [
                 'token' =>  Helper::createToken()  , 
-                'uID'   => $uID , 
-                'appID' =>  $appID , 
                 'lang'  =>  'en_GB'  , // We can put the languages in a table 
                 'os'    =>  'ubuntu' ,
                 'created_at'  =>  now()   

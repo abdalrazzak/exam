@@ -14,13 +14,16 @@ trait Responser {
     public $text_error = [
         '419'    => 'Your token has expired. Please, login again', 
         '420'    => 'Your token is invalid. Please, login again' ,
-        '403'    => 'Token is not found ' ,
+        '403'    => 'Token is not found ' , 
         'E001'       => 'this email or password incorrect'  , 
         'E002'       => 'Server Error'  , 
         'E003'       => 'Subscription expired'  , 
         'E004'       => 'There are no parameters to process'  , 
-        'E005'       => 'Invalid payment'  , 
-        'E006'       => 'Invalid payment'  , 
+        'E005'       => 'Invalid payment'  ,   
+        'E006'       => 'appId is not found  '  ,   
+        'E007'       => 'Subscription exists '  ,   
+        'E008'       => 'The information is incorrect '  ,   
+        
 
     ];
  
@@ -33,12 +36,12 @@ trait Responser {
      * @param $msg nullable
      * @return response
      */
-    public function error($code , $msg = null ){
+    public function error($code , $msg = null , Array $details = null){
             $this->data['error'] = true ; 
             $this->data['http_code'] = $code ; 
             $this->data['err_num'] = $code ; 
             $this->data['msg'] = (!is_null($msg)) ? $msg : $this->text_error[$code] ; 
-        return $this->responseData($this->data);
+        return (is_null($details)) ? $this->responseData($this->data) : $this->responseData($details) ;
     }
 
   

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=>'v1'  ,'namespace' =>'API'], function () {
     // 'check-json-web-token'
+    Route::post('register', 'AuthController@register')->name('register'); 
     Route::get('report', 'ReportController@report')->name('report');  
     Route::post('login', 'AuthController@login')->name('login'); 
 

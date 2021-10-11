@@ -16,14 +16,10 @@ class CreateDevicesTable extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('token')->unique()->nullable();
-            $table->bigInteger('uID')->unsigned()->index('uID');
-            $table->bigInteger('appID')->unsigned()->index('appID'); 
             $table->string('lang')->nullable(); 
             $table->string('os')->nullable(); 
             $table->timestamps();
 
-            $table->foreign('uID')->references('id')->on('users')->onDelete('cascade') ;
-            $table->foreign('appID')->references('id')->on('apps')->onDelete('cascade') ;
         });
     }
 

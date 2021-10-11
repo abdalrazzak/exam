@@ -19,7 +19,7 @@ class Device extends Authenticatable
     }
 
     public function scopeFound($query , $token ){
-        return $query->where('token' ,'=', $token)->limit(1);
+        return $query->where('token' ,'=', $token);
     }
  
 
@@ -27,11 +27,10 @@ class Device extends Authenticatable
         return $query->where($filter)->get();
     }
 
-    public function subscription(){
-        return $this->hasOne(Subscription::class , 'deviceID' , 'id');
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class , 'deviceID' , 'id');
     }
 
-    public function user(){
-        return $this->belongsTo(User::class , 'uID' , 'id') ; 
-    }
+
+ 
 }

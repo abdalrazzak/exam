@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Subscription;
+use App\Events\SubscriptionEvent;
+use App\Events\SubscriptionUpdatedEvent;
 
 class SubscriptionObserver
 {

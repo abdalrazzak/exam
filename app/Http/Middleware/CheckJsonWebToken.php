@@ -23,15 +23,16 @@ class CheckJsonWebToken
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
-        //   $user = JWTAuth::parseToken()->authenticate(); // you can use user any where
+    {    
+
             $token = $request->header(Helper::TOKEN_HANDLER , null);
-            $check = Device::found((string) $token)->exists();
-            if ($check) {
-                $subscription = Device::where('token' , '=' , $token)->first()->subscription()->first() ;  
+            $device = Device::found((string) $token)->first();
+            if ($device) {
+                $subscription = $device->subscriptions()->getByAppId($request['appID'])->first() ;  
+               
                 $request['subscription'] = $subscription ;
                
-                if(!$subscription->active){
+                if(!isset($subscription->active) || !$subscription->active){
                     return $this->error('E003'); // Subscription expired
                 }
                 return $next($request);
